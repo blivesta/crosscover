@@ -18,7 +18,7 @@
       options = $.extend({
         animateInClass:'fade-in',
         animateOutClass:'fade-out',
-				interval : 2000,
+				interval : 5000,
 				startIndex : 0,
         autoPlay : true,
 				controles : true,
