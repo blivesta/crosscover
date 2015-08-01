@@ -12,7 +12,7 @@
     "url": "https://github.com/blivesta/crosscover/issues"
   },
   "license": "MIT",
-  "main": "dist/js/jquery.crosscover.js",
+  "main": "dist/js/crosscover.js",
   "repository": {
     "url": "https://github.com/blivesta/crosscover.git",
     "type": "git"
