@@ -1,0 +1,50 @@
+.crosscover-controls {
+  position: absolute;
+  z-index: 9999;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.crosscover-player,
+.crosscover-next,
+.crosscover-prev {
+  float: left;
+  width: 33.33333%;
+  height: 64px;
+  cursor: pointer;
+}
+
+.crosscover-player {
+  text-align: center;
+}
+
+.crosscover-next {
+  text-align: right;
+}
+
+.crosscover-player:before,
+.crosscover-next:before,
+.crosscover-prev:before {
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 20px;
+  color: rgba(255,255,255, 1);
+}
+
+.crosscover-player:before {
+  content: 'PLAY';
+}
+
+.crosscover-player.is-playing:before {
+  content: 'PAUSE';
+}
+
+.crosscover-next:before {
+  content: 'NEXT';
+}
+
+.crosscover-prev:before {
+  content: 'PREV';
+}
