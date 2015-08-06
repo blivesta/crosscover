@@ -1,0 +1,94 @@
+/*------------------------------------*\
+    #crosscover controler icons
+\*------------------------------------*/
+
+/**
+ * crosscover-icon-player
+ * Play & Pause
+ */
+.crosscover-player > .crosscover-icon-player:before,
+.crosscover-player > .crosscover-icon-player:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 0;
+  height: 0;
+  margin: -8px 0 0 -6px;
+  content: '';
+  transition: all .4s ease-out;
+  border: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-left: 15px solid var(--crosscover-icon-color);
+}
+
+/* Play hover */
+.crosscover-player:hover > .crosscover-icon-player:before,
+.crosscover-player:hover > .crosscover-icon-player:after {
+  border-left-color: var(--crosscover-icon-hoverColor);
+}
+
+
+/* Pause */
+.crosscover-player.is-playing > .crosscover-icon-player:before,
+.crosscover-player.is-playing > .crosscover-icon-player:after {
+  margin: -8px 0 0 -2px;
+  content: '';
+  border: 2px solid var(--crosscover-icon-color);
+  border-top-width: 20px;
+}
+
+.crosscover-player.is-playing > .crosscover-icon-player:before {
+  left: 42%;
+  transform: rotate(-180deg);
+}
+
+.crosscover-player.is-playing > .crosscover-icon-player:after {
+  left: 58%;
+  transform: rotate(180deg);
+}
+
+/* Pause hover */
+.crosscover-player.is-playing:hover > .crosscover-icon-player:before,
+.crosscover-player.is-playing:hover > .crosscover-icon-player:after {
+  border: 2px solid var(--crosscover-icon-hoverColor);
+  border-top-width: 20px;
+}
+
+
+/**
+ * Next & Prev icons
+ */
+.crosscover-icon-next:after,
+.crosscover-icon-prev:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  margin-left: -5px;
+  content: '';
+  transition: all .4s ease-out;
+  border-top: 4px solid var(--crosscover-icon-color);
+  border-right: 4px solid var(--crosscover-icon-color);
+  border-radius: 2px;
+}
+
+/* Next */
+.crosscover-icon-next:after {
+  margin-left: -10px;
+  transform: rotate(45deg);
+}
+
+/* Prev */
+.crosscover-icon-prev:after {
+  transform: rotate(-135deg);
+}
+
+/* Next and Prev hover */
+.crosscover-next:hover .crosscover-icon-next:after,
+.crosscover-prev:hover .crosscover-icon-prev:after {
+  border-top: 4px solid var(--crosscover-icon-hoverColor);
+  border-right: 4px solid var(--crosscover-icon-hoverColor);
+}

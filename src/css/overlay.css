@@ -1,0 +1,46 @@
+/*------------------------------------*\
+    #crosscover overlay
+\*------------------------------------*/
+
+/**
+ * .crosscover-overlay
+ */
+ .crosscover-overlay {
+  position: absolute;
+  z-index: var(--crosscover-overlay-zIndex);
+  display: table;
+  width: 100%;
+  height: 100%;
+  background: var(--crosscover-overlay-bgColor);
+}
+
+/**
+ * .crosscover-overlay > .crosscover-island
+ */
+.crosscover-island {
+  display: table-cell;
+  width: 100%;
+  height: 100%;
+  color: var(--crosscover-island-color);
+  text-align: var(--crosscover-island-textAlign);
+  vertical-align: var(--crosscover-island-verticalAlign);
+}
+
+/**
+ * .crosscover-overlay > .crosscover-island > .crosscover-title
+ */
+.crosscover-title {
+  font-size: 3rem;
+  color:var(--crosscover-island-title-color);
+  margin: 0;
+}
+
+/**
+ * .crosscover-overlay > .crosscover-island > .crosscover-description
+ */
+.crosscover-description {
+  font-size: 1.15rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color:var(--crosscover-island-description-color);
+}
