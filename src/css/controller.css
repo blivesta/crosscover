@@ -1,0 +1,45 @@
+/*------------------------------------*\
+    #crosscover controller
+\*------------------------------------*/
+
+/**
+ * .crosscover-controller
+ */
+ .crosscover-controller {
+  position: absolute;
+  z-index: var(--crosscover-controller-zIndex);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  user-select: none;
+}
+
+/**
+ * .crosscover-controller > .crosscover-player
+ * .crosscover-controller > .crosscover-next
+ * .crosscover-controller > .crosscover-prev
+ */
+.crosscover-player,
+.crosscover-next,
+.crosscover-prev {
+  position: absolute;
+  bottom: 0;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.crosscover-player {
+  left: 50%;
+  margin-left: -32px;
+}
+.crosscover-prev {
+  left: 0;
+}
+.crosscover-next {
+  right: 0;
+}

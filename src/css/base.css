@@ -13,7 +13,9 @@ body {
  */
 .crosscover {
   position: relative;
-  height: 100%;
+  height: var(--crosscover-height);
+  overflow: hidden;
+  background-color: var(--crosscover-bgColor)
 }
 
 /**
@@ -37,17 +39,19 @@ body {
   float: left;
   width: 100%;
   height: 100%;
-  animation-duration: 1s;
   opacity: 0;
   background-position: center center;
   background-size: cover;
+  animation-duration: 1s;
   animation-fill-mode: both;
 }
 
-.crosscover-list img {
+.crosscover-list > li > img {
   display: none;
 }
-
-.crosscover-active {
-  opacity: 1 !important;
+.crosscover-list > li.crosscover-setup {
+  opacity:0;
+}
+.crosscover-list > li.crosscover-active {
+  opacity: 1;
 }

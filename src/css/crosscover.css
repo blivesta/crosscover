@@ -1,3 +1,25 @@
 @import "./base";
-@import "./controls";
+@import "./controller";
+@import "./controller-icons";
+@import "./overlay";
 @import "./fade";
+
+:root {
+  --crosscover-height: 100%;
+  --crosscover-bgColor: rgba(0,0,0,1);
+
+  --crosscover-icon-color: rgba(255,255,255,1);
+  --crosscover-icon-hoverColor: rgba(255,255,255,.4);
+
+  --crosscover-overlay-bgColor: rgba(0,0,0,.6);
+
+  --crosscover-island-verticalAlign: middle;
+  --crosscover-island-textAlign: center;
+  --crosscover-island-color: rgba(255,255,255,1);
+
+  --crosscover-island-title-color: rgba(255,255,255,1);
+  --crosscover-island-description-color: rgba(255,255,255,1);
+
+  --crosscover-controller-zIndex: 2;
+  --crosscover-overlay-zIndex: 1;
+}
