@@ -1,13 +1,10 @@
-var autoprefixer = require('autoprefixer-core');
-var cssnano = require('gulp-cssnano');
 var del = require('del');
 var gulp = require('gulp');
 var header = require('gulp-header');
 var jshint = require('gulp-jshint');
 var pkg = require('./package.json');
 var plumber = require('gulp-plumber');
-var postcss = require('gulp-postcss');
-var cssImport = require('postcss-import');
+var cssnext = require('gulp-cssnext');
 var rename = require('gulp-rename');
 var runSequence = require('run-sequence');
 var stylish = require('jshint-stylish');
@@ -23,21 +20,24 @@ var banner = [
 ' */',
 ''].join('\n');
 
+var browsers = ['last 2 versions'];
+
 var dirs = {
   src:'./src',
   dist:'./dist'
 };
 
 gulp.task('css', function () {
-  var processors = [
-    cssImport(),
-    autoprefixer({browsers: ['> 1%', 'last 2 versions']}),
-  ];
   return gulp.src(dirs.src + '/css/' + pkg.name + '.css')
     .pipe(header(banner, {pkg:pkg}))
-    .pipe(postcss(processors))
+    .pipe(cssnext({
+      browsers: browsers,
+    }))
     .pipe(gulp.dest(dirs.dist + '/css'))
-    .pipe(cssnano())
+    .pipe(cssnext({
+      browsers: browsers,
+      compress: true
+    }))
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest(dirs.dist + '/css'));
 });
@@ -48,7 +48,6 @@ gulp.task('js', function(){
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
     .pipe(header(banner, { pkg:pkg }))
-    // .pipe(rename({prefix: 'jquery.'}))
     .pipe(gulp.dest(dirs.dist + '/js'))
     .pipe(uglify())
     .pipe(rename({suffix: '.min'}))
@@ -65,10 +64,11 @@ gulp.task('default',['build'], function(){
   gulp.watch(['./src/js/*.js'], ['js']);
 });
 
-gulp.task('build', function(){
+gulp.task('build', function(cd){
   runSequence(
     'cleanup',
     ['js'],
-    'css'
+    'css',
+    cd
   );
 });
