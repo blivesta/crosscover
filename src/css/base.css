@@ -4,11 +4,21 @@ body {
   margin: 0;
 }
 
+/*------------------------------------*\
+    #crosscover
+\*------------------------------------*/
+
+/**
+ * .crosscover
+ */
 .crosscover {
   position: relative;
   height: 100%;
 }
 
+/**
+ * .crosscover > .crosscover-list
+ */
 .crosscover-list {
   position: relative;
   top: 0;
