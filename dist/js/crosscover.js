@@ -1,5 +1,5 @@
 /*!
- * crosscover v0.1.0
+ * crosscover v0.2.0
  * Carousel of a simple background image using jquery and animate.css.
  * http://git.blivesta.com/crosscover
  * License : MIT
@@ -214,7 +214,7 @@
         .addClass('crosscover-active')
         .removeClass('crosscover-setup')
         .addClass(options.animateInClass)
-        .animateEnd(function() {
+        .on('animationend',function() {
           $(this).addClass('crosscover-active');
         });
     },
@@ -228,7 +228,7 @@
         .addClass('crosscover-setup')
         .removeClass('crosscover-active')
         .addClass(options.animateOutClass)
-        .animateEnd(function() {
+        .on('animationend', function() {
           $(this)
             .removeClass()
             .addClass('crosscover-setup');
@@ -261,17 +261,6 @@
       return __.settings.currentIndex;
     }
 
-  };
-
-  $.fn.animateEnd = function(callback) {
-    var end = 'animationend webkitAnimationEnd mozAnimationEnd oAnimationEnd MSAnimationEnd';
-    return this.each(function() {
-      var $this = $(this);
-      $this.bind(end, function() {
-        $this.unbind(end);
-        return callback.call(this);
-      });
-    });
   };
 
   $.fn.crosscover = function(method) {
