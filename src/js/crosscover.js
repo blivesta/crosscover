@@ -207,7 +207,7 @@
         .addClass('crosscover-active')
         .removeClass('crosscover-setup')
         .addClass(options.animateInClass)
-        .on('animationend',function() {
+        .csscallbacks('animationEnd',function() {
           $(this).addClass('crosscover-active');
         });
     },
@@ -221,7 +221,7 @@
         .addClass('crosscover-setup')
         .removeClass('crosscover-active')
         .addClass(options.animateOutClass)
-        .on('animationend', function() {
+        .csscallbacks('animationEnd', function() {
           $(this)
             .removeClass()
             .addClass('crosscover-setup');
@@ -264,6 +264,32 @@
     } else {
       $.error('Method ' + method + ' does not exist on jQuery.' + namespace);
     }
+  };
+
+  $.fn.csscallbacks = function(type, callback){
+
+    var _animationStart = 'animationstart webkitAnimationStart oAnimationStart';
+    var _animationEnd = 'animationend webkitAnimationEnd oAnimationEnd';
+    var _transitionEnd = "transitionend webkitTransitionEnd oTransitionEnd";
+
+    if(type === 'animationStart'){
+      type = _animationStart;
+    } else if(type === 'animationEnd'){
+      type = _animationEnd;
+    } else if(type === 'transitionStart'){
+      type = _transitionStart;
+    } else if(type === 'transitionEnd'){
+      type = _transitionEnd;
+    }
+
+    return this.each(function(index) {
+      var $this = $(this);
+      $this.on(type, function(){
+        $this.off(type);
+        return callback.call(this);
+      });
+    });
+
   };
 
 }));
