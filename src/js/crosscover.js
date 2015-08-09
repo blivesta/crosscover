@@ -276,8 +276,6 @@
       type = _animationStart;
     } else if(type === 'animationEnd'){
       type = _animationEnd;
-    } else if(type === 'transitionStart'){
-      type = _transitionStart;
     } else if(type === 'transitionEnd'){
       type = _transitionEnd;
     }
