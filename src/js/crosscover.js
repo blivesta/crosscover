@@ -90,7 +90,7 @@
         .append(
           $('<div>')
           .attr({
-            'data-crosscover-controls': ''
+            'data-crosscover-controller': ''
           })
           .addClass(options.controllerClass)
           .append(
@@ -127,10 +127,10 @@
       var _this = this;
       var $this = $(this);
       var options = $this.data(namespace).options;
-      var $controls = $this.children('[data-crosscover-controls]');
-      var $navPrev = $controls.children('[data-crosscover-prev]');
-      var $navNext = $controls.children('[data-crosscover-next]');
-      var $navPlayPause = $controls.children('[data-crosscover-player]');
+      var $controller = $this.children('[data-crosscover-controller]');
+      var $navPrev = $controller.children('[data-crosscover-prev]');
+      var $navNext = $controller.children('[data-crosscover-next]');
+      var $navPlayPause = $controller.children('[data-crosscover-player]');
 
       $navPlayPause.on('click.' + namespace, function(event) {
         $(this).blur();
