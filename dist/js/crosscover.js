@@ -1,5 +1,5 @@
 /*!
- * crosscover v0.3.1
+ * crosscover v0.4.0
  * Carousel of a simple background image using jquery and animate.css.
  * http://git.blivesta.com/crosscover
  * License : MIT
@@ -38,7 +38,10 @@
 
       __.settings = {
         currentIndex: options.startIndex,
-        timer: null
+        timer: null,
+        coverBaseClass:'crosscover-cover',
+        coverWaitClass:'is-wait',
+        coverActiveClass:'is-active'
       };
 
       return this.each(function() {
@@ -70,7 +73,7 @@
         var $self = $(this);
         var image = $self.find('img').attr('src');
         $self
-          .addClass('crosscover-setup')
+          .addClass(__.settings.coverBaseClass, __.settings.coverWaitClass)
           .css({
             'background-image': 'url(' + image + ')'
           });
@@ -97,7 +100,7 @@
         .append(
           $('<div>')
           .attr({
-            'data-crosscover-controls': ''
+            'data-crosscover-controller': ''
           })
           .addClass(options.controllerClass)
           .append(
@@ -134,10 +137,10 @@
       var _this = this;
       var $this = $(this);
       var options = $this.data(namespace).options;
-      var $controls = $this.children('[data-crosscover-controls]');
-      var $navPrev = $controls.children('[data-crosscover-prev]');
-      var $navNext = $controls.children('[data-crosscover-next]');
-      var $navPlayPause = $controls.children('[data-crosscover-player]');
+      var $controller = $this.children('[data-crosscover-controller]');
+      var $navPrev = $controller.children('[data-crosscover-prev]');
+      var $navNext = $controller.children('[data-crosscover-next]');
+      var $navPlayPause = $controller.children('[data-crosscover-player]');
 
       $navPlayPause.on('click.' + namespace, function(event) {
         $(this).blur();
@@ -211,11 +214,13 @@
 
       return $item
         .eq(__.settings.currentIndex)
-        .addClass('crosscover-active')
-        .removeClass('crosscover-setup')
+        .addClass(__.settings.coverActiveClass)
+        .removeClass(__.settings.coverWaitClass)
         .addClass(options.animateInClass)
         .csscallbacks('animationEnd',function() {
-          $(this).addClass('crosscover-active');
+          $(this)
+          .removeClass(options.animateInClass + ' ' + __.settings.coverWaitClass)
+          .addClass(__.settings.coverActiveClass);
         });
     },
 
@@ -225,13 +230,13 @@
 
       return $item
         .eq(__.settings.currentIndex)
-        .addClass('crosscover-setup')
-        .removeClass('crosscover-active')
+        .addClass(__.settings.coverWaitClass)
+        .removeClass(__.settings.coverActiveClass)
         .addClass(options.animateOutClass)
         .csscallbacks('animationEnd', function() {
           $(this)
-            .removeClass()
-            .addClass('crosscover-setup');
+            .removeClass(options.animateOutClass + ' ' + __.settings.coverActiveClass)
+            .addClass(__.settings.coverWaitClass);
         });
     },
 
