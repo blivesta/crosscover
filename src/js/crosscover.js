@@ -31,7 +31,10 @@
 
       __.settings = {
         currentIndex: options.startIndex,
-        timer: null
+        timer: null,
+        coverBaseClass:'crosscover-cover',
+        coverWaitClass:'is-wait',
+        coverActiveClass:'is-active'
       };
 
       return this.each(function() {
@@ -63,7 +66,7 @@
         var $self = $(this);
         var image = $self.find('img').attr('src');
         $self
-          .addClass('crosscover-setup')
+          .addClass(__.settings.coverBaseClass, __.settings.coverWaitClass)
           .css({
             'background-image': 'url(' + image + ')'
           });
@@ -204,11 +207,13 @@
 
       return $item
         .eq(__.settings.currentIndex)
-        .addClass('crosscover-active')
-        .removeClass('crosscover-setup')
+        .addClass(__.settings.coverActiveClass)
+        .removeClass(__.settings.coverWaitClass)
         .addClass(options.animateInClass)
         .csscallbacks('animationEnd',function() {
-          $(this).addClass('crosscover-active');
+          $(this)
+          .removeClass(options.animateInClass + ' ' + __.settings.coverWaitClass)
+          .addClass(__.settings.coverActiveClass);
         });
     },
 
@@ -218,13 +223,13 @@
 
       return $item
         .eq(__.settings.currentIndex)
-        .addClass('crosscover-setup')
-        .removeClass('crosscover-active')
+        .addClass(__.settings.coverWaitClass)
+        .removeClass(__.settings.coverActiveClass)
         .addClass(options.animateOutClass)
         .csscallbacks('animationEnd', function() {
           $(this)
-            .removeClass()
-            .addClass('crosscover-setup');
+            .removeClass(options.animateOutClass + ' ' + __.settings.coverActiveClass)
+            .addClass(__.settings.coverWaitClass);
         });
     },
 

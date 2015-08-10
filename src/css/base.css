@@ -49,9 +49,9 @@ body {
 .crosscover-list > li > img {
   display: none;
 }
-.crosscover-list > li.crosscover-setup {
+.crosscover-list > li.is-wait {
   opacity:0;
 }
-.crosscover-list > li.crosscover-active {
+.crosscover-list > li.is-active {
   opacity: 1;
 }
