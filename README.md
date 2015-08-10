@@ -10,6 +10,12 @@ Carousel of a simple background image using jquery and animate.css.
 ## Demo & Installation
 http://git.blivesta.com/crosscover/
 
+## Dependencies
+
+- [jQuery](http://jquery.com/) : [@jquery](https://github.com/jquery/jquery) ([jQuery Foundation and other contributors](https://github.com/jquery/jquery/blob/master/AUTHORS.txt)) 
+- [animate.css](https://daneden.github.io/animate.css/) : [@daneden](https://github.com/daneden) ([Daniel Eden](http://daneden.me/))
+
+
 
 ## Contributing
 
