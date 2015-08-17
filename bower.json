@@ -1,0 +1,22 @@
+{
+  "name": "crosscover",
+  "homepage": "http://git.blivesta.com/crosscover",
+  "author": "blivesta <enmt@blivesta.com> (http://blivesta.com/)",
+  "description": "Carousel of a simple background image using jquery and animate.css.",
+  "main": [
+    "dist/js/crosscover.min.js",
+    "dist/css/crosscover.min.css"
+  ],
+  "keywords": [
+    "slider",
+    "animation",
+    "jquery",
+    "css"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "~*",
+    "node_modules",
+    "bower_components"
+  ]
+}
