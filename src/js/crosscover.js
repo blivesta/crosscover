@@ -223,7 +223,6 @@
 
       return $item
         .eq(__.settings.currentIndex)
-        .addClass(__.settings.coverWaitClass)
         .removeClass(__.settings.coverActiveClass)
         .addClass(options.animateOutClass)
         .csscallbacks('animationEnd', function() {
