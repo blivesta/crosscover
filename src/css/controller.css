@@ -8,7 +8,7 @@
  .crosscover-controller {
   position: absolute;
   z-index: var(--crosscover-controller-zIndex);
-  bottom: 0;
+  bottom: 30px;
   left: 0;
   width: 100%;
   user-select: none;
