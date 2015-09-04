@@ -2,6 +2,7 @@
 @import "./controller";
 @import "./controller-icons";
 @import "./overlay";
+@import "./dots-nav";
 @import "./fade";
 
 :root {
@@ -14,6 +15,11 @@
   --crosscover-icon-color: rgba(255,255,255,1);
   --crosscover-icon-hoverColor: rgba(255,255,255,.4);
 
+  --crosscover-dotsNav-size: 14px;
+  --crosscover-dotsNav-bgColor: rgba(255,255,255,.4);
+  --crosscover-dotsNav-bgColor-hover: rgba(255,255,255,.6);
+  --crosscover-dotsNav-bgColor-active: rgba(255,255,255,1);
+
   --crosscover-overlay-bgColor: rgba(0,0,0,.6);
 
   --crosscover-island-verticalAlign: middle;
@@ -24,6 +30,7 @@
   --crosscover-island-description-color: rgba(255,255,255,1);
 
   --crosscover-controller-zIndex: 3;
+  --crosscover-dotsNav-zIndex: 3;
   --crosscover-overlay-zIndex: 2;
   --crosscover-item-active-zIndex: 1;
   --crosscover-item-wait-zIndex: 0;

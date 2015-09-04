@@ -18,7 +18,8 @@
         interval: 5000,
         startIndex: 0,
         autoPlay: true,
-        controller: true,
+        dotsNav: true,
+        controller: false,
         controllerClass: 'crosscover-controller',
         prevClass: 'crosscover-prev',
         nextClass: 'crosscover-next',
@@ -35,6 +36,7 @@
         coverWaitClass:'is-wait',
         coverActiveClass:'is-active',
         playerActiveClass: 'is-playing',
+        dotsNavClass: 'crosscover-dots'
       };
 
       return this.each(function() {
@@ -48,6 +50,8 @@
           $this.data(namespace, {
             options: options
           });
+
+          if (options.dotsNav) __.createDots.call(_this, $item);
 
           if (options.controller) __.createControler.call(_this, $item);
 
@@ -81,6 +85,46 @@
 
       __.autoPlayStart.call(_this, $item);
       __.show.call(_this, $item);
+    },
+
+    createDots: function($item) {
+      var _this = this;
+      var $this = $(this);
+      var options = $this.data(namespace).options;
+      var len = $item.length;
+
+      $this
+      .append(
+        $('<ul>')
+        .addClass(__.settings.dotsNavClass)
+      );
+
+      for (var i = 0; i < len; i++) {
+        $this
+        .children('.' + __.settings.dotsNavClass)
+        .append(
+          $('<li>')
+          .addClass('crosscover-dots-nav-' + i)
+            .append(
+              $('<button>')
+            )
+          );
+        }
+
+        __.addDots.call(_this, $item);
+
+    },
+
+    addDots: function($item) {
+      var _this = this;
+      var $this = $(this);
+      var options = $this.data(namespace).options;
+      var $dots = $this.children('.' + __.settings.dotsNavClass);
+      var $dot = $dots.children('li').children('button');
+
+      $dot.on('click.' + namespace, function(event) {
+        return __.toggle.call(_this, $item, 'dots', $(this).parent('li').index());
+      });
     },
 
     createControler: function($item) {
@@ -177,7 +221,7 @@
       }
     },
 
-    toggle: function($item, setting) {
+    toggle: function($item, setting, num) {
       var _this = this;
       var $this = $(this);
       var options = $this.data(namespace).options;
@@ -188,6 +232,8 @@
         __.settings.currentIndex++;
       } else if (setting === 'prev') {
         __.settings.currentIndex--;
+      } else if (setting === 'dots') {
+        __.settings.currentIndex = num;
       }
 
       if (__.settings.currentIndex >= $item.length) {
@@ -205,6 +251,16 @@
       var $this = $(this);
       var options = $this.data(namespace).options;
 
+      if(options.dotsNav) {
+        $this
+        .children('.' + __.settings.dotsNavClass)
+        .children('li')
+        .eq(__.settings.currentIndex)
+        .addClass('is-active')
+        .children('button')
+        .prop('disabled', true);
+      }
+
       return $item
         .eq(__.settings.currentIndex)
         .addClass(__.settings.coverActiveClass)
@@ -220,6 +276,16 @@
     hide: function($item) {
       var $this = $(this);
       var options = $this.data(namespace).options;
+
+      if(options.dotsNav) {
+        $this
+        .children('.' + __.settings.dotsNavClass)
+        .children('li')
+        .eq(__.settings.currentIndex)
+        .removeClass('is-active')
+        .children('button')
+        .prop('disabled', false);
+      }
 
       return $item
         .eq(__.settings.currentIndex)
