@@ -13,8 +13,8 @@
   var __ = {
     init: function(options) {
       options = $.extend({
-        animateInClass: 'fade-in',
-        animateOutClass: 'fade-out',
+        inClass: 'fade-in',
+        outClass: 'fade-out',
         interval: 5000,
         startIndex: 0,
         autoPlay: true,
@@ -265,10 +265,10 @@
         .eq(__.settings.currentIndex)
         .addClass(__.settings.coverActiveClass)
         .removeClass(__.settings.coverWaitClass)
-        .addClass(options.animateInClass)
+        .addClass(options.inClass)
         .csscallbacks('animationEnd',function() {
           $(this)
-          .removeClass(options.animateInClass + ' ' + __.settings.coverWaitClass)
+          .removeClass(options.inClass + ' ' + __.settings.coverWaitClass)
           .addClass(__.settings.coverActiveClass);
         });
     },
@@ -290,10 +290,10 @@
       return $item
         .eq(__.settings.currentIndex)
         .removeClass(__.settings.coverActiveClass)
-        .addClass(options.animateOutClass)
+        .addClass(options.outClass)
         .csscallbacks('animationEnd', function() {
           $(this)
-            .removeClass(options.animateOutClass + ' ' + __.settings.coverActiveClass)
+            .removeClass(options.outClass + ' ' + __.settings.coverActiveClass)
             .addClass(__.settings.coverWaitClass);
         });
     },
