@@ -2,6 +2,7 @@ html,
 body {
   height: 100%;
   margin: 0;
+  overflow: auto;
 }
 
 /*------------------------------------*\
@@ -32,8 +33,9 @@ body {
   list-style: none;
 }
 
-.crosscover-list > li {
+.crosscover-item {
   position: absolute;
+  display: block;
   top: 0;
   left: 0;
   float: left;
@@ -46,12 +48,14 @@ body {
   animation-fill-mode: both;
 }
 
-.crosscover-list > li > img {
+.crosscover-item > img {
   display: none;
 }
-.crosscover-list > li.is-wait {
-  opacity:0;
+.crosscover-item.is-wait {
+  opacity: 0;
+  z-index: 0;
 }
-.crosscover-list > li.is-active {
+.crosscover-item.is-active {
   opacity: 1;
+  z-index: 1;
 }
