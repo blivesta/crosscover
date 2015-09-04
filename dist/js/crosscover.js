@@ -20,17 +20,17 @@
   var __ = {
     init: function(options) {
       options = $.extend({
-        animateInClass: 'fade-in',
-        animateOutClass: 'fade-out',
+        inClass: 'fade-in',
+        outClass: 'fade-out',
         interval: 5000,
         startIndex: 0,
         autoPlay: true,
-        controller: true,
+        dotsNav: true,
+        controller: false,
         controllerClass: 'crosscover-controller',
         prevClass: 'crosscover-prev',
         nextClass: 'crosscover-next',
         playerClass: 'crosscover-player',
-        playerActiveClass: 'is-playing',
         playerInnerHtml: '<span class="crosscover-icon-player"></span>',
         prevInnerHtml: '<span class="crosscover-icon-prev"></span>',
         nextInnerHtml: '<span class="crosscover-icon-next"></span>'
@@ -41,7 +41,9 @@
         timer: null,
         coverBaseClass:'crosscover-item',
         coverWaitClass:'is-wait',
-        coverActiveClass:'is-active'
+        coverActiveClass:'is-active',
+        playerActiveClass: 'is-playing',
+        dotsNavClass: 'crosscover-dots'
       };
 
       return this.each(function() {
@@ -55,6 +57,8 @@
           $this.data(namespace, {
             options: options
           });
+
+          if (options.dotsNav) __.createDots.call(_this, $item);
 
           if (options.controller) __.createControler.call(_this, $item);
 
@@ -90,11 +94,51 @@
       __.show.call(_this, $item);
     },
 
+    createDots: function($item) {
+      var _this = this;
+      var $this = $(this);
+      var options = $this.data(namespace).options;
+      var len = $item.length;
+
+      $this
+      .append(
+        $('<ul>')
+        .addClass(__.settings.dotsNavClass)
+      );
+
+      for (var i = 0; i < len; i++) {
+        $this
+        .children('.' + __.settings.dotsNavClass)
+        .append(
+          $('<li>')
+          .addClass('crosscover-dots-nav-' + i)
+            .append(
+              $('<button>')
+            )
+          );
+        }
+
+        __.addDots.call(_this, $item);
+
+    },
+
+    addDots: function($item) {
+      var _this = this;
+      var $this = $(this);
+      var options = $this.data(namespace).options;
+      var $dots = $this.children('.' + __.settings.dotsNavClass);
+      var $dot = $dots.children('li').children('button');
+
+      $dot.on('click.' + namespace, function(event) {
+        return __.toggle.call(_this, $item, 'dots', $(this).parent('li').index());
+      });
+    },
+
     createControler: function($item) {
       var _this = this;
       var $this = $(this);
       var options = $this.data(namespace).options;
-      var isClass = options.autoPlay ? options.playerActiveClass : null;
+      var isClass = options.autoPlay ? __.settings.playerActiveClass : null;
 
       $this
         .append(
@@ -170,7 +214,7 @@
         options.autoPlay = false;
 
         $navPlayPause
-          .removeClass(options.playerActiveClass)
+          .removeClass(__.settings.playerActiveClass)
           .addClass(options.playClass);
 
         return __.autoPlayStop.call(_this);
@@ -178,13 +222,13 @@
 
         options.autoPlay = true;
 
-        $navPlayPause.addClass(options.playerActiveClass);
+        $navPlayPause.addClass(__.settings.playerActiveClass);
 
         return __.autoPlayStart.call(_this, $item);
       }
     },
 
-    toggle: function($item, setting) {
+    toggle: function($item, setting, num) {
       var _this = this;
       var $this = $(this);
       var options = $this.data(namespace).options;
@@ -195,6 +239,8 @@
         __.settings.currentIndex++;
       } else if (setting === 'prev') {
         __.settings.currentIndex--;
+      } else if (setting === 'dots') {
+        __.settings.currentIndex = num;
       }
 
       if (__.settings.currentIndex >= $item.length) {
@@ -212,14 +258,24 @@
       var $this = $(this);
       var options = $this.data(namespace).options;
 
+      if(options.dotsNav) {
+        $this
+        .children('.' + __.settings.dotsNavClass)
+        .children('li')
+        .eq(__.settings.currentIndex)
+        .addClass('is-active')
+        .children('button')
+        .prop('disabled', true);
+      }
+
       return $item
         .eq(__.settings.currentIndex)
         .addClass(__.settings.coverActiveClass)
         .removeClass(__.settings.coverWaitClass)
-        .addClass(options.animateInClass)
+        .addClass(options.inClass)
         .csscallbacks('animationEnd',function() {
           $(this)
-          .removeClass(options.animateInClass + ' ' + __.settings.coverWaitClass)
+          .removeClass(options.inClass + ' ' + __.settings.coverWaitClass)
           .addClass(__.settings.coverActiveClass);
         });
     },
@@ -228,13 +284,23 @@
       var $this = $(this);
       var options = $this.data(namespace).options;
 
+      if(options.dotsNav) {
+        $this
+        .children('.' + __.settings.dotsNavClass)
+        .children('li')
+        .eq(__.settings.currentIndex)
+        .removeClass('is-active')
+        .children('button')
+        .prop('disabled', false);
+      }
+
       return $item
         .eq(__.settings.currentIndex)
         .removeClass(__.settings.coverActiveClass)
-        .addClass(options.animateOutClass)
+        .addClass(options.outClass)
         .csscallbacks('animationEnd', function() {
           $(this)
-            .removeClass(options.animateOutClass + ' ' + __.settings.coverActiveClass)
+            .removeClass(options.outClass + ' ' + __.settings.coverActiveClass)
             .addClass(__.settings.coverWaitClass);
         });
     },
