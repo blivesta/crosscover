@@ -23,7 +23,6 @@
         prevClass: 'crosscover-prev',
         nextClass: 'crosscover-next',
         playerClass: 'crosscover-player',
-        playerActiveClass: 'is-playing',
         playerInnerHtml: '<span class="crosscover-icon-player"></span>',
         prevInnerHtml: '<span class="crosscover-icon-prev"></span>',
         nextInnerHtml: '<span class="crosscover-icon-next"></span>'
@@ -34,7 +33,8 @@
         timer: null,
         coverBaseClass:'crosscover-item',
         coverWaitClass:'is-wait',
-        coverActiveClass:'is-active'
+        coverActiveClass:'is-active',
+        playerActiveClass: 'is-playing',
       };
 
       return this.each(function() {
@@ -87,7 +87,7 @@
       var _this = this;
       var $this = $(this);
       var options = $this.data(namespace).options;
-      var isClass = options.autoPlay ? options.playerActiveClass : null;
+      var isClass = options.autoPlay ? __.settings.playerActiveClass : null;
 
       $this
         .append(
@@ -163,7 +163,7 @@
         options.autoPlay = false;
 
         $navPlayPause
-          .removeClass(options.playerActiveClass)
+          .removeClass(__.settings.playerActiveClass)
           .addClass(options.playClass);
 
         return __.autoPlayStop.call(_this);
@@ -171,7 +171,7 @@
 
         options.autoPlay = true;
 
-        $navPlayPause.addClass(options.playerActiveClass);
+        $navPlayPause.addClass(__.settings.playerActiveClass);
 
         return __.autoPlayStart.call(_this, $item);
       }
