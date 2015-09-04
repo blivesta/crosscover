@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sandbox: Overlay - Crosscover</title>
+  <link href="sandbox.css" rel="stylesheet">
+  <link href="../dist/css/crosscover.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.3.0/animate.min.css">
+</head>
+<body>
+
+  <div class="crosscover">
+
+    <div class="crosscover-list">
+      <a class="crosscover-item" href="http://blivesta.com" target="_blank">
+        <img src="http://git.blivesta.com/crosscover/images/01.jpg" alt="image01"/>
+      </a>
+      <div class="crosscover-item">
+        <img src="http://git.blivesta.com/crosscover/images/02.jpg" alt="image02"/>
+      </div>
+      <a class="crosscover-item" href="http://git.blivesta.com/crosscover" target="_blank">
+        <img src="http://git.blivesta.com/crosscover/images/03.jpg" alt="image03"/>
+      </a>
+      <div class="crosscover-item">
+        <img src="http://git.blivesta.com/crosscover/images/04.jpg" alt="image04"/>
+      </div>
+      <a class="crosscover-item" href="http://git.blivesta.com/animsition" target="_blank">
+        <img src="http://git.blivesta.com/crosscover/images/05.jpg" alt="image05"/>
+      </a>
+    </div>
+
+  </div>
+
+
+  <h1>Crosscover: Dots nav</h1>
+  <ol>
+    <li><a href="index.html">Basic</a></li>
+    <li><a href="overlay.html">Overlay</a></li>
+    <li><a href="link.html">Link</a></li>
+  </ol>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
+  <script src="../dist/js/crosscover.js" charset="utf-8"></script>
+  <script>
+  $(document).on('ready', function(){
+    $('.crosscover').crosscover({
+      controller: true,
+      dotNav: true
+    });
+  });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  font-family: 'Avenir Next','Helvetica Neue', sans-serif;
+}
+
+h1 {
+  padding-left:2rem;
+  padding-right:2rem;
+  font-size: 2rem;
+}
