@@ -39,7 +39,7 @@
       __.settings = {
         currentIndex: options.startIndex,
         timer: null,
-        coverBaseClass:'crosscover-cover',
+        coverBaseClass:'crosscover-item',
         coverWaitClass:'is-wait',
         coverActiveClass:'is-active'
       };
@@ -48,7 +48,7 @@
         var _this = this;
         var $this = $(this);
         var data = $this.data(namespace);
-        var $item = $this.children('.crosscover-list').children('li');
+        var $item = $this.children('.crosscover-list').children('.' + __.settings.coverBaseClass);
 
         if (!data) {
           options = $.extend({}, options);
@@ -230,7 +230,6 @@
 
       return $item
         .eq(__.settings.currentIndex)
-        .addClass(__.settings.coverWaitClass)
         .removeClass(__.settings.coverActiveClass)
         .addClass(options.animateOutClass)
         .csscallbacks('animationEnd', function() {
