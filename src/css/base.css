@@ -16,7 +16,7 @@ body {
   position: relative;
   height: var(--crosscover-height);
   overflow: hidden;
-  background-color: var(--crosscover-bgColor)
+  background-color: var(--crosscover-bgColor);
 }
 
 /**
