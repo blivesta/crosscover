@@ -1,11 +1,11 @@
 {
   "name": "crosscover",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "Carousel of a simple background image using jquery and animate.css.",
   "keywords": [
-    "slider",
-    "animation",
-    "jquery",
+    "Carousel",
+    "Animation",
+    "jQuery",
     "css"
   ],
   "homepage": "http://git.blivesta.com/crosscover",

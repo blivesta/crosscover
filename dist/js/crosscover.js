@@ -1,5 +1,5 @@
 /*!
- * crosscover v0.5.0
+ * crosscover v1.0.0
  * Carousel of a simple background image using jquery and animate.css.
  * http://git.blivesta.com/crosscover
  * License : MIT
