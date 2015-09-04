@@ -43,8 +43,8 @@ body {
   height: 100%;
   opacity: 0;
   background-position: center center;
-  background-size: cover;
-  animation-duration: 1s;
+  background-size: var(--crosscover-bgSize);
+  animation-duration: var(--crosscover-animationDuration);
   animation-fill-mode: both;
 }
 
@@ -53,9 +53,9 @@ body {
 }
 .crosscover-item.is-wait {
   opacity: 0;
-  z-index: 0;
+  z-index: var(--crosscover-item-wait-zIndex);
 }
 .crosscover-item.is-active {
   opacity: 1;
-  z-index: 1;
+  z-index: var(--crosscover-item-active-zIndex);
 }

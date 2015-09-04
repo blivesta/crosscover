@@ -8,6 +8,9 @@
   --crosscover-height: 100%;
   --crosscover-bgColor: rgba(0,0,0,1);
 
+  --crosscover-bgSize: cover;
+  --crosscover-animationDuration: 1s;
+
   --crosscover-icon-color: rgba(255,255,255,1);
   --crosscover-icon-hoverColor: rgba(255,255,255,.4);
 
@@ -20,6 +23,9 @@
   --crosscover-island-title-color: rgba(255,255,255,1);
   --crosscover-island-description-color: rgba(255,255,255,1);
 
-  --crosscover-controller-zIndex: 2;
-  --crosscover-overlay-zIndex: 1;
+  --crosscover-controller-zIndex: 3;
+  --crosscover-overlay-zIndex: 2;
+  --crosscover-item-active-zIndex: 1;
+  --crosscover-item-wait-zIndex: 0;
+
 }
