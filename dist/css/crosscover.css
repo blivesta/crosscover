@@ -1,5 +1,5 @@
 /*!
- * crosscover v1.0.0
+ * crosscover v1.0.1
  * Carousel of a simple background image using jquery and animate.css.
  * http://git.blivesta.com/crosscover
  * License : MIT
@@ -295,14 +295,15 @@ body {
   padding: 1rem .375rem;
 }
 
-[class^="crosscover-dots-nav-"] button{
+[class^="crosscover-dots-nav-"] button {
   width: 14px;
   height: 14px;
   cursor: pointer;
-  background-color: rgba(255,255,255,.3);
+  background-color: rgba(255, 255, 255, .3);
   border-radius: 50%;
   border: none;
   outline: none;
+  padding: 0;
 }
 
 [class^="crosscover-dots-nav-"] button:hover{
