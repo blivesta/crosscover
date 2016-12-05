@@ -50,6 +50,7 @@
         var _this = this;
         var $this = $(this);
         var data = $this.data(namespace);
+        var $window = $(window);
         var $item = $this.children('.crosscover-list').children('.' + __.settings.coverBaseClass);
 
         if (!data) {
@@ -64,6 +65,11 @@
 
           __.setup.call(_this, $item);
 
+          $window.on('focus', function () {
+            __.autoPlayStart.call(_this, $item);
+          }).on('blur', function () {
+            __.autoPlayStop.call(_this);
+          });
         }
       });
     },
@@ -347,7 +353,7 @@
 
     var _animationStart = 'animationstart webkitAnimationStart oAnimationStart';
     var _animationEnd = 'animationend webkitAnimationEnd oAnimationEnd';
-    var _transitionEnd = "transitionend webkitTransitionEnd oTransitionEnd";
+    var _transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd';
 
     if(type === 'animationStart'){
       type = _animationStart;
