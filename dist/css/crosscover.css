@@ -50,10 +50,8 @@ body {
   opacity: 0;
   background-position: center center;
   background-size: cover;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
+  animation-duration: 1s;
+  animation-fill-mode: both;
 }
 
 .crosscover-item > img {
@@ -157,14 +155,12 @@ body {
 
 .crosscover-player.is-playing > .crosscover-icon-player:before {
   left: 42%;
-  -webkit-transform: rotate(-180deg);
-          transform: rotate(-180deg);
+  transform: rotate(-180deg);
 }
 
 .crosscover-player.is-playing > .crosscover-icon-player:after {
   left: 58%;
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 /* Pause hover */
@@ -197,14 +193,12 @@ body {
 /* Next */
 .crosscover-icon-next:after {
   margin-left: -10px;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 /* Prev */
 .crosscover-icon-prev:after {
-  -webkit-transform: rotate(-135deg);
-          transform: rotate(-135deg);
+  transform: rotate(-135deg);
 }
 
 /* Next and Prev hover */
@@ -317,16 +311,6 @@ body {
     #crosscover fade-in
 \*------------------------------------*/
 
-@-webkit-keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -338,18 +322,7 @@ body {
 }
 
 .fade-in {
-  -webkit-animation-name: fade-in;
-          animation-name: fade-in;
-}
-
-@-webkit-keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
+  animation-name: fade-in;
 }
 
 @keyframes fade-out {
@@ -363,6 +336,5 @@ body {
 }
 
 .fade-out {
-  -webkit-animation-name: fade-out;
-          animation-name: fade-out;
+  animation-name: fade-out;
 }
